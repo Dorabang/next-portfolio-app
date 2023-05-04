@@ -5,8 +5,8 @@ import Image from 'next/image';
 
 const Header = () => {
   return (
-    <header className='border-solid border-b border-gray-400'>
-      <div className='container mx-auto flex justify-center p-3'>
+    <header className='border-b-2 border-solid border-black'>
+      <div className='container mx-auto flex py-8'>
         <Link href='/'>
           <Image src={Logo} alt='semicolon 로고 이미지' />
         </Link>
