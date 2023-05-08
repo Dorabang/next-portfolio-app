@@ -1,5 +1,9 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Noto_Serif_KR } from 'next/font/google';
+import Link from 'next/link';
+import { projects } from './Constans';
+import Image from 'next/image';
 
 const notoSerifKR = Noto_Serif_KR({
   weight: ['400', '700', '900'],
@@ -7,14 +11,10 @@ const notoSerifKR = Noto_Serif_KR({
 });
 
 const Portfolio = () => {
-  const category = [
-    { id: 1, name: 'All', className: 'all' },
-    { id: 2, name: 'HTML&CSS', className: 'html_css' },
-    { id: 3, name: 'JavaScript', className: 'js' },
-    { id: 4, name: 'React', className: 'react' },
-    { id: 5, name: 'TypeScript', className: 'ts' },
-    { id: 6, name: 'NextJS', className: 'next' },
-  ];
+  const [selectedFilters, setSelectedFilters] = useState();
+  const category = ['HTML&CSS', 'JavaScript', 'React', 'TypeScript', 'NextJS'];
+
+  let filters = category;
 
   return (
     <section>
@@ -28,17 +28,46 @@ const Portfolio = () => {
           <ul className='category flex justify-between'>
             {category.map((category) => (
               <li
-                key={category.id}
-                className={`${notoSerifKR.className} px-3 cursor-pointer`}
+                key={category}
+                className={`${
+                  notoSerifKR.className
+                } px-3 pt-1 mx-1 cursor-pointer hover:bg-black hover:rounded-md hover:text-white ${
+                  selectedFilters && 'bg-gray'
+                }`}
               >
-                {category.name}
+                {category}
               </li>
             ))}
           </ul>
         </div>
       </div>
       <ul className='container mx-auto py-12 flex flex-wrap justify-between'>
-        <li className='w-4/12 bg-black h-96'></li>
+        {projects.map((project) => (
+          <li
+            key={project.id}
+            className='border-2 border-solid border-black mr-1'
+          >
+            <Link href={`${project.link}`}>
+              <div className='border-b-2 border-black border-solid'>
+                <Image
+                  src={`/${project.image}`}
+                  alt={`${project.name} 썸네일 사진`}
+                  width={300}
+                  height={300}
+                />
+              </div>
+              <div className='p-2'>
+                <h4 className={`${notoSerifKR.className} font-bold`}>
+                  {project.name}
+                </h4>
+                <p className={`${notoSerifKR.className} text-sm py-1`}>
+                  {project.category}
+                </p>
+                <p className='text-gray-500'>{project.description}</p>
+              </div>
+            </Link>
+          </li>
+        ))}
       </ul>
     </section>
   );

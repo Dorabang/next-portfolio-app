@@ -13,13 +13,6 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const metadata = {
-  title: 'Sem;Colon',
-  description: 'Park Su-a Web Development Portfolio',
-  keywords:
-    'web development, web design, javascript, react, nextjs, node, html, css',
-};
-
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='ko'>

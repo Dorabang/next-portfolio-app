@@ -12,10 +12,8 @@ const Footer = () => {
   return (
     <footer className='border-t-2 border-solid border-black'>
       <div className='container mx-auto py-12 flex justify-between items-center'>
-        <address>
-          <span className={`${notoSerifKR.className} font-bold`}>
-            (FrontEnd Developer) Park su-a
-          </span>
+        <address className={`${notoSerifKR.className}`}>
+          <span className='font-bold'>(FrontEnd Developer) Park su-a</span>
           <br />
           <span className='pt-5 pb-2.5 inline-block'>Tel : 010.8930.1195</span>
           <br />
