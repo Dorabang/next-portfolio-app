@@ -11,7 +11,7 @@ const notoSerifKR = Noto_Serif_KR({
 const Footer = () => {
   return (
     <footer className='border-t-2 border-solid border-black'>
-      <div className='container mx-auto py-12 flex justify-between items-center'>
+      <div className='container mx-auto py-12 flex justify-between items-center sm:px-1'>
         <address className={`${notoSerifKR.className}`}>
           <span className='font-bold'>(FrontEnd Developer) Park su-a</span>
           <br />
@@ -21,7 +21,7 @@ const Footer = () => {
         </address>
         <div>
           <Link href='https://github.com/Dorabang'>
-            <Image src={Github} alt='Github 로고 이미지' />
+            <Image src={Github} alt='Github 로고 이미지' width={36} />
           </Link>
         </div>
       </div>
