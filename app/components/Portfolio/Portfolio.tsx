@@ -31,8 +31,8 @@ const Portfolio = () => {
                 key={category}
                 className={`${
                   notoSerifKR.className
-                } px-3 pt-1 mx-1 cursor-pointer hover:bg-black hover:rounded-md hover:text-white ${
-                  selectedFilters && 'bg-gray'
+                } px-3 pt-1 mx-1 cursor-pointer rounded hover:bg-zinc-800 hover:text-white transition duration-100 ${
+                  selectedFilters && 'bg-black'
                 }`}
               >
                 {category}
@@ -43,29 +43,28 @@ const Portfolio = () => {
       </div>
       <ul className='container mx-auto py-12 flex flex-wrap justify-between'>
         {projects.map((project) => (
-          <li
-            key={project.id}
-            className='border-2 border-solid border-black mr-1'
-          >
-            <Link href={`${project.link}`}>
-              <div className='border-b-2 border-black border-solid'>
-                <Image
-                  src={`/${project.image}`}
-                  alt={`${project.name} 썸네일 사진`}
-                  width={300}
-                  height={300}
-                />
-              </div>
-              <div className='p-2'>
-                <h4 className={`${notoSerifKR.className} font-bold`}>
-                  {project.name}
-                </h4>
-                <p className={`${notoSerifKR.className} text-sm py-1`}>
-                  {project.category}
-                </p>
-                <p className='text-gray-500'>{project.description}</p>
-              </div>
-            </Link>
+          <li key={project.id} className='mb-4 w-1/3'>
+            <div className='border-2 border-solid border-black mr-4'>
+              <Link href={`${project.link}`}>
+                <div className='border-b-2 border-black border-solid'>
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} 썸네일 사진`}
+                    sizes=''
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div className='p-2'>
+                  <h4 className={`${notoSerifKR.className} font-black`}>
+                    {project.name}
+                  </h4>
+                  <p className={`${notoSerifKR.className} text-sm my-1`}>
+                    {project.category}
+                  </p>
+                  <p className='text-zinc-400'>{project.description}</p>
+                </div>
+              </Link>
+            </div>
           </li>
         ))}
       </ul>
