@@ -1,72 +1,112 @@
 'use client';
-import React, { useState } from 'react';
-import { Noto_Serif_KR } from 'next/font/google';
+import React, { useState, useEffect } from 'react';
+import { projects, projectsType } from './Constans';
 import Link from 'next/link';
-import { projects } from './Constans';
 import Image from 'next/image';
+import notoSerifKR from '@/app/components/NotoSerif';
 
-const notoSerifKR = Noto_Serif_KR({
-  weight: ['400', '700', '900'],
-  subsets: ['latin'],
-});
+type filtersType = [string];
 
 const Portfolio = () => {
-  const [selectedFilters, setSelectedFilters] = useState();
-  const category = ['HTML&CSS', 'JavaScript', 'React', 'TypeScript', 'NextJS'];
+  const [selectedFilters, setSelectedFilters] = useState<filtersType[]>([]);
+  const [filteredItems, setFilteredItems] = useState(projects);
 
-  let filters = category;
+  let filters: filtersType = [
+    'HTML&CSS',
+    'React',
+    'NextJS',
+    'TypeScript',
+    'Tailwind',
+  ];
+
+  const handleFilterButtonClick = (selectedCategory) => {
+    if (selectedFilters.includes(selectedCategory)) {
+      let filters = selectedFilters.filter((el) => el !== selectedCategory);
+      setSelectedFilters(filters);
+    } else {
+      setSelectedFilters([...selectedFilters, selectedCategory]);
+    }
+  };
+
+  useEffect(() => {
+    filterItems();
+  }, [selectedFilters]);
+
+  const filterItems = () => {
+    if (selectedFilters.length > 0) {
+      let tempItems = selectedFilters.map((selectedCategory) => {
+        let temp = projects.filter(
+          (project: projectsType) => project.category === selectedCategory
+        );
+        return temp;
+      });
+      setFilteredItems(tempItems.flat());
+    } else {
+      setFilteredItems([...projects]);
+    }
+  };
 
   return (
-    <section>
-      <div className='border-solid border-black border-b-2'>
-        <div className='flex justify-between container mx-auto py-5'>
-          <div className='sub_title'>
-            <h2 className={`${notoSerifKR.className} font-bold text-2xl`}>
-              Portfolio
-            </h2>
-          </div>
-          <ul className='category flex justify-between'>
-            {category.map((category) => (
+    <section className='border-solid border-black border-b-2 dark:border-zinc-500'>
+      <div className='border-solid border-black border-b-2 dark:border-zinc-500'>
+        <div className='flex justify-between container mx-auto py-5 lg:px-0 px-3'>
+          <h2
+            className={`${notoSerifKR.className} font-bold text-2xl dark:text-white`}
+          >
+            Portfolio
+          </h2>
+          <ul className='flex justify-between'>
+            {filters.map((filter, idx) => (
               <li
-                key={category}
+                onClick={() => handleFilterButtonClick(filter)}
+                key={`filters-${idx}`}
                 className={`${
                   notoSerifKR.className
-                } px-3 pt-1 mx-1 cursor-pointer rounded hover:bg-zinc-800 hover:text-white transition duration-100 ${
-                  selectedFilters && 'bg-black'
+                } px-3 pt-1 mx-1 cursor-pointer rounded border border-solid border-zinc-800
+                hover:bg-zinc-800 hover:text-white dark:border-zinc-500 dark:hover:text-black dark:hover:bg-white transition duration-100
+                ${
+                  selectedFilters?.includes(filter)
+                    ? 'bg-zinc-800 text-white dark:text-black dark:bg-white'
+                    : 'dark:bg-zinc-900 dark:text-white'
                 }`}
               >
-                {category}
+                {filter}
               </li>
             ))}
           </ul>
         </div>
       </div>
-      <ul className='container mx-auto py-12 flex flex-wrap justify-between'>
-        {projects.map((project) => (
-          <li key={project.id} className='mb-4 w-1/3'>
-            <div className='border-2 border-solid border-black mr-4'>
-              <Link href={`${project.link}`}>
-                <div className='border-b-2 border-black border-solid'>
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} 썸네일 사진`}
-                    sizes=''
-                    style={{ width: '100%' }}
-                  />
-                </div>
-                <div className='p-2'>
-                  <h4 className={`${notoSerifKR.className} font-black`}>
-                    {project.name}
-                  </h4>
-                  <p className={`${notoSerifKR.className} text-sm my-1`}>
-                    {project.category}
-                  </p>
-                  <p className='text-zinc-400'>{project.description}</p>
-                </div>
-              </Link>
-            </div>
-          </li>
-        ))}
+      <ul className='container mx-auto py-12 flex flex-wrap lg:px-0 px-3'>
+        {projects.map((project) => {
+          const { id, image, category, name } = project;
+          return (
+            <li key={id} className='mb-5 lg:w-1/3 w-full'>
+              <div className='lg:mr-5 mr-0'>
+                <Link href={`/portfolio/${id}`}>
+                  <div className='border border-solid border-zinc-700/0 dark:border-zinc-700'>
+                    <Image
+                      src={image}
+                      alt={`${name} 썸네일 사진`}
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className='pt-2'>
+                    <h4
+                      className={`${notoSerifKR.className} font-bold text-lg dark:text-white dark:font-normal`}
+                    >
+                      {name}
+                    </h4>
+                    <p
+                      className={`${notoSerifKR.className} text-sm my-0.5 dark:text-white`}
+                    >
+                      {category}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
