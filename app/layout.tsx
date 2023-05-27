@@ -19,7 +19,9 @@ export default function RootLayout({ children }: LayoutProps) {
       <Head>
         <link rel='shorcut icon' href='/favicon.ico' />
       </Head>
-      <body className={notoSansKR.className}>
+      <body
+        className={`${notoSansKR.className} dark:bg-zinc-900 transition duration-500 h-full`}
+      >
         <Header />
         {children}
         <Footer />

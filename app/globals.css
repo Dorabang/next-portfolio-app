@@ -27,13 +27,13 @@ body {
   overflow-x: hidden;
 }
 body::-webkit-scrollbar-track {
-  background: #eee;
+  background: #e4e4e7;
 }
 body::-webkit-scrollbar {
   width: 15px;
 }
 body::-webkit-scrollbar-thumb {
-  background: #999;
+  background: #a1a1aa;
 }
 hr {
   height: 0;
