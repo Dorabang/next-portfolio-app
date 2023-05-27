@@ -1,46 +1,61 @@
 import { StaticImageData } from 'next/image';
-import romand from '../../images/romand_thumb.jpg';
 
-interface projectsType {
-  id: React.Key;
-  name: String;
-  link: String;
+import { v4 as uuidv4 } from 'uuid';
+
+import romand from 'public/images/romand_thumb.jpg';
+import movieApp from 'public/images/movieApp_thumb.jpg';
+import todoSomething from 'public/images/todoSomething_thumb.jpg';
+import semicolon from 'public/images/semicolon_thumb.jpg';
+import UndefinedImg from 'public/images/Undefined_thumb.jpg';
+
+export interface projectsType {
+  id: any;
+  name: string;
+  concept: string;
   image: StaticImageData;
-  category: String;
-  description: String;
+  category: string;
+  link: string;
 }
 
 export const projects: projectsType[] = [
   {
-    id: 0,
+    id: uuidv4(),
     name: 'rom&nd,',
-    link: '/portfolio/romand',
+    concept: 'romand',
     image: romand,
     category: 'HTML&CSS',
-    description: 'rom&nd 웹 리디자인',
+    link: 'https://dorabang.github.io/romandRenewalProject/',
   },
   {
-    id: 1,
-    name: 'Hotels Combined',
-    link: '/portfolio/Hotels-Combined',
-    image: romand,
-    category: 'HTML&CSS',
-    description: '호텔스컴바인 웹 리디자인',
-  },
-  {
-    id: 2,
+    id: uuidv4(),
     name: 'movieApp',
-    link: '/portfolio/movieApp',
-    image: romand,
+    concept: 'movieApp',
+    image: movieApp,
     category: 'React',
-    description: '평점별 영화 리스트 확인 사이트',
+    link: 'https://dorabang.github.io/movieApp/',
   },
   {
-    id: 3,
-    name: 'Todo Something',
-    link: '/portfolio/Todo-something',
-    image: romand,
+    id: uuidv4(),
+    name: 'TodoSomething',
+    concept: 'todoSomething',
+    image: todoSomething,
     category: 'React',
-    description: '사용자별 투두리스트 등록 사이트',
+    link: 'https://dorabang.github.io/wanted-pre-onboarding-frontend/',
+  },
+  {
+    id: uuidv4(),
+    name: 'sem;-colon',
+    concept: 'semicolon',
+    image: semicolon,
+    category: 'NextJS TypeScript Tailwind',
+    link: '/',
+  },
+  {
+    id: uuidv4(),
+    name: 'Undefined',
+    concept: 'Undefined_webMall',
+    image: UndefinedImg,
+    category: 'NextJS TypeScript Tailwind',
+    link: 'https://web-mall.vercel.app/',
   },
 ];
