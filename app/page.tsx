@@ -1,3 +1,4 @@
+import AboutMain from './components/AboutMain/AboutMain';
 import Portfolio from './components/Portfolio/Portfolio';
 
 export const metadata = {
@@ -12,6 +13,7 @@ const Home = () => {
     <main>
       <section></section>
       <Portfolio />
+      <AboutMain />
     </main>
   );
 };
