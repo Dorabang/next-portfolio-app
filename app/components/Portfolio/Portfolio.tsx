@@ -1,25 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { projects, projectsType } from './Constans';
+import { projects } from './Constans';
 import Link from 'next/link';
 import Image from 'next/image';
 import notoSerifKR from '@/app/components/NotoSerif';
 
-type filtersType = [string];
+type filtersType = string[];
 
 const Portfolio = () => {
-  const [selectedFilters, setSelectedFilters] = useState<filtersType[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<filtersType>([]);
   const [filteredItems, setFilteredItems] = useState(projects);
 
-  let filters: filtersType = [
-    'HTML&CSS',
-    'React',
-    'NextJS',
-    'TypeScript',
-    'Tailwind',
-  ];
+  let filters: filtersType = ['HTML&CSS', 'React', 'NextJS'];
 
-  const handleFilterButtonClick = (selectedCategory) => {
+  const handleFilterButtonClick = (selectedCategory: string) => {
     if (selectedFilters.includes(selectedCategory)) {
       let filters = selectedFilters.filter((el) => el !== selectedCategory);
       setSelectedFilters(filters);
@@ -34,9 +28,9 @@ const Portfolio = () => {
 
   const filterItems = () => {
     if (selectedFilters.length > 0) {
-      let tempItems = selectedFilters.map((selectedCategory) => {
+      let tempItems = selectedFilters.map((selectedCategory: string) => {
         let temp = projects.filter(
-          (project: projectsType) => project.category === selectedCategory
+          (project) => project.category === selectedCategory
         );
         return temp;
       });
@@ -55,9 +49,9 @@ const Portfolio = () => {
           >
             Portfolio
           </h2>
-          <ul className='flex justify-between'>
-            {filters.map((filter, idx) => (
-              <li
+          <div className='flex justify-between'>
+            {filters.map((filter: string, idx: number) => (
+              <button
                 onClick={() => handleFilterButtonClick(filter)}
                 key={`filters-${idx}`}
                 className={`${
@@ -65,19 +59,19 @@ const Portfolio = () => {
                 } px-3 pt-1 mx-1 cursor-pointer rounded border border-solid border-zinc-800
                 hover:bg-zinc-800 hover:text-white dark:border-zinc-500 dark:hover:text-black dark:hover:bg-white transition duration-100
                 ${
-                  selectedFilters?.includes(filter)
+                  selectedFilters.includes(filter)
                     ? 'bg-zinc-800 text-white dark:text-black dark:bg-white'
                     : 'dark:bg-zinc-900 dark:text-white'
                 }`}
               >
                 {filter}
-              </li>
+              </button>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
       <ul className='container mx-auto py-12 flex flex-wrap lg:px-0 px-3'>
-        {projects.map((project) => {
+        {filteredItems.map((project) => {
           const { id, image, category, name } = project;
           return (
             <li key={id} className='mb-5 lg:w-1/3 w-full'>

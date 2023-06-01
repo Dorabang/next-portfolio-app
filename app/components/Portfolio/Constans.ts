@@ -1,61 +1,67 @@
 import { StaticImageData } from 'next/image';
-
-import { v4 as uuidv4 } from 'uuid';
-
 import romand from 'public/images/romand_thumb.jpg';
+import romand_concept from 'public/images/romand_concept.jpg';
 import movieApp from 'public/images/movieApp_thumb.jpg';
+import movieApp_concept from 'public/images/movieApp_concept.jpg';
 import todoSomething from 'public/images/todoSomething_thumb.jpg';
+import todoSomething_concept from 'public/images/todoSomething_concept.jpg';
 import semicolon from 'public/images/semicolon_thumb.jpg';
+import semicolon_concept from 'public/images/semicolon_thumb.jpg';
 import UndefinedImg from 'public/images/Undefined_thumb.jpg';
-
+import Undefined_webMall_concept from 'public/images/Undefined_webMall_concept.jpg';
 export interface projectsType {
-  id: any;
+  id: number;
   name: string;
   concept: string;
+  descImg: StaticImageData;
   image: StaticImageData;
   category: string;
   link: string;
 }
-
 export const projects: projectsType[] = [
   {
-    id: uuidv4(),
-    name: 'rom&nd,',
-    concept: 'romand',
-    image: romand,
-    category: 'HTML&CSS',
-    link: 'https://dorabang.github.io/romandRenewalProject/',
+    id: 0,
+    name: 'Undefined',
+    concept: 'Undefined_webMall',
+    image: UndefinedImg,
+    descImg: Undefined_webMall_concept,
+    category: 'NextJS',
+    link: 'https://web-mall.vercel.app/',
   },
   {
-    id: uuidv4(),
-    name: 'movieApp',
-    concept: 'movieApp',
-    image: movieApp,
-    category: 'React',
-    link: 'https://dorabang.github.io/movieApp/',
+    id: 1,
+    name: 'sem;-colon',
+    concept: 'semicolon',
+    image: semicolon,
+    descImg: semicolon_concept,
+    category: 'NextJS',
+    link: '/',
   },
   {
-    id: uuidv4(),
+    id: 2,
     name: 'TodoSomething',
     concept: 'todoSomething',
     image: todoSomething,
+    descImg: todoSomething_concept,
     category: 'React',
     link: 'https://dorabang.github.io/wanted-pre-onboarding-frontend/',
   },
   {
-    id: uuidv4(),
-    name: 'sem;-colon',
-    concept: 'semicolon',
-    image: semicolon,
-    category: 'NextJS TypeScript Tailwind',
-    link: '/',
+    id: 3,
+    name: 'movieApp',
+    concept: 'movieApp',
+    image: movieApp,
+    descImg: movieApp_concept,
+    category: 'React',
+    link: 'https://dorabang.github.io/movieApp/',
   },
   {
-    id: uuidv4(),
-    name: 'Undefined',
-    concept: 'Undefined_webMall',
-    image: UndefinedImg,
-    category: 'NextJS TypeScript Tailwind',
-    link: 'https://web-mall.vercel.app/',
+    id: 4,
+    name: 'rom&nd,',
+    concept: 'romand',
+    image: romand,
+    descImg: romand_concept,
+    category: 'HTML&CSS',
+    link: 'https://dorabang.github.io/romandRenewalProject/',
   },
 ];

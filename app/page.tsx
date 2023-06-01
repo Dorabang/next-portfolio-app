@@ -1,4 +1,5 @@
 import AboutMain from './components/AboutMain/AboutMain';
+import MainVisual from './components/MainVisual/MainVisual';
 import Portfolio from './components/Portfolio/Portfolio';
 
 export const metadata = {
@@ -11,7 +12,7 @@ export const metadata = {
 const Home = () => {
   return (
     <main>
-      <section></section>
+      <MainVisual />
       <Portfolio />
       <AboutMain />
     </main>
