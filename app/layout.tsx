@@ -1,4 +1,5 @@
 import Footer from './components/Footer/Footer';
+import GoTopBtn from './components/GoTopBtn/GoTopBtn';
 import Header from './components/Header/Header';
 import './globals.css';
 import { Noto_Sans_KR } from 'next/font/google';
@@ -9,9 +10,9 @@ const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
 });
 
-type LayoutProps = {
+interface LayoutProps {
   children: React.ReactNode;
-};
+}
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <Header />
         {children}
         <Footer />
+        <GoTopBtn />
       </body>
     </html>
   );
