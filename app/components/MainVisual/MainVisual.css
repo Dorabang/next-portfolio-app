@@ -1,5 +1,6 @@
 section .swiper > div.swiper-pagination-progressbar {
   background: #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .swiper-pagination-progressbar-fill {
@@ -7,10 +8,11 @@ section .swiper > div.swiper-pagination-progressbar {
 }
 
 section .swiper .swiper-pagination {
-  top: calc(100% - 2px);
+  top: calc(100% - 3px);
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   --swiper-theme-color: #999;
+  transform: scale(0.8);
 }
