@@ -31,7 +31,7 @@ export default function DarkTheme() {
   return (
     <button
       onClick={toggleDarkMode}
-      className='p-4 bg-zinc-900 border border-solid border-zinc-50 text-white dark:bg-white dark:border-zinc-900 dark:text-black rounded-lg transition duration-150'
+      className='p-2 bg-zinc-900 border border-solid border-zinc-50 text-white dark:bg-white dark:border-zinc-900 dark:text-black rounded-lg transition duration-150'
     >
       {dark === 'Dark Mode' ? <BsMoonStars size={18} /> : <BsSun size={18} />}
     </button>
