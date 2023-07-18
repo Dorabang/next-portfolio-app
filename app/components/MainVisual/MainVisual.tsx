@@ -21,6 +21,10 @@ const MainVisual = () => {
       <Swiper
         spaceBetween={20}
         slidesPerView={1}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+        }}
         loop={true}
         pagination={{
           type: 'progressbar',
