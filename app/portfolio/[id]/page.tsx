@@ -4,8 +4,24 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import notoSerifKR from '@/app/components/NotoSerif';
+import { FiSearch } from 'react-icons/fi';
 
-type paramsType = { params: { id: number } };
+interface paramsType {
+  params: { id: number };
+}
+
+const Wrapper = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div
+      className='fixed right-10 bottom-24 flex justify-center items-center rounded-lg text-center
+bg-zinc-900 text-white cursor-pointer border border-zinc-50
+dark:bg-white dark:border-zinc-900 dark:text-black'
+    >
+      {children}
+    </div>
+  );
+};
 
 const PortfolioPage = ({ params: { id } }: paramsType) => {
   const [project, setProject] = useState<projectsType | undefined>(undefined);
@@ -13,7 +29,7 @@ const PortfolioPage = ({ params: { id } }: paramsType) => {
   useEffect(() => {
     const result = projects.find((item) => item.id === Number(id));
     setProject(result);
-  }, []);
+  }, [id]);
   if (!project) return null;
 
   return (
@@ -24,11 +40,15 @@ const PortfolioPage = ({ params: { id } }: paramsType) => {
           alt={`${project.name} 컨셉 페이지 이미지`}
         />
       </div>
-      <div className='fixed right-20 bottom-12 px-8 py-3 bg-black text-white'>
-        <Link href={`${project.link}`} target='_blank'>
-          홈페이지 가기
+      <Wrapper>
+        <Link
+          href={`${project.link}`}
+          target='_blank'
+          className={`${notoSerifKR.className} text-xs p-2`}
+        >
+          <FiSearch size={18} />
         </Link>
-      </div>
+      </Wrapper>
     </div>
   );
 };
