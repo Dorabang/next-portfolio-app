@@ -23,7 +23,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
 
 const IconsWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='flex flex-wrap justify-center items-center w-14 h-14 items-center mb-4'>
+    <div className='flex flex-wrap justify-center items-center w-14 h-14 mb-4'>
       {children}
     </div>
   );
@@ -46,7 +46,11 @@ const AboutMain = () => {
           <p className='text-zinc-500'>(FrontEnd Developer) Park Su-a</p>
         </div>
 
-        <div className='text-center py-10 lg:pl-5 pl-0 lg:w-2/3 w-full border-black border-solid lg:border-l-2 lg:border-t-0 border-l-0 border-t-2 dark:border-zinc-500'>
+        <div
+          className='text-center py-10 lg:pl-5 pl-0 lg:w-2/3 w-full
+        border-black border-solid lg:border-l lg:border-t-0 border-l-0 border-t
+        dark:border-zinc-500'
+        >
           <h3
             className={`${notoSerifKR.className} font-bold pb-5 dark:text-white dark:font-normal`}
           >
