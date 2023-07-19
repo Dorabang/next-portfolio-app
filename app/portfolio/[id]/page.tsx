@@ -1,11 +1,10 @@
 'use client';
 import { projects, projectsType } from '@/app/components/Portfolio/Constans';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import notoSerifKR from '@/app/components/NotoSerif';
-import { FiSearch } from 'react-icons/fi';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
 
 interface paramsType {
   params: { id: number };
@@ -14,9 +13,9 @@ interface paramsType {
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
-      className='fixed right-10 bottom-24 flex justify-center items-center rounded-lg text-center
-bg-zinc-900 text-white cursor-pointer border border-zinc-50
-dark:bg-white dark:border-zinc-900 dark:text-black'
+      className='fixed 2xl:right-[9.64%] xl:right-[7.8%] lg:right-3 md:right-[9.6%] right-4
+      lg:bottom-28 bottom-[6.5rem] flex justify-center items-center rounded-lg text-center
+bg-[#979942] text-white cursor-pointer border border-solid border-zinc-50'
     >
       {children}
     </div>
@@ -44,9 +43,9 @@ const PortfolioPage = ({ params: { id } }: paramsType) => {
         <Link
           href={`${project.link}`}
           target='_blank'
-          className={`${notoSerifKR.className} text-xs p-2`}
+          className={`${notoSerifKR.className} text-xs lg:p-3 p-2`}
         >
-          <FiSearch size={18} />
+          <BsBoxArrowUpRight size={22} className='scale-[0.82]' />
         </Link>
       </Wrapper>
     </div>
