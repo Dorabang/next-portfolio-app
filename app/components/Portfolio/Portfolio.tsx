@@ -1,10 +1,10 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { projects } from './Constans';
 import Link from 'next/link';
 import Image from 'next/image';
 import notoSerifKR from '@/app/components/NotoSerif';
-import { FiMoreHorizontal } from 'react-icons/fi';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 type filtersType = string[];
 
@@ -12,6 +12,7 @@ const Portfolio = () => {
   const [categoryOpen, setCategoryOpen] = useState<boolean>(false);
   const [selectedFilters, setSelectedFilters] = useState<filtersType>([]);
   const [filteredItems, setFilteredItems] = useState(projects);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   let filters: filtersType = ['HTML&CSS', 'React', 'NextJS'];
 
@@ -24,29 +25,52 @@ const Portfolio = () => {
     }
   };
 
-  const CategoryComponent = ({ display }: { display: string }) => {
+  const CategoryComponent = ({
+    divStyle,
+    buttonStyle,
+  }: {
+    divStyle: string;
+    buttonStyle: string;
+  }) => {
     return (
-      <div className={`justify-between ${display}`}>
+      <div className={`flex justify-between ${divStyle} relative`}>
         {filters.map((filter: string, idx: number) => (
           <button
             onClick={() => handleFilterButtonClick(filter)}
             key={`filters-${idx}`}
             className={`${
               notoSerifKR.className
-            } px-3 pt-1 mx-1 cursor-pointer rounded border border-solid border-zinc-800
-      hover:bg-zinc-800 hover:text-white dark:border-zinc-500 dark:hover:text-black dark:hover:bg-white transition duration-100
+            } px-3 py-1 mx-1.5 cursor-pointer rounded border border-solid border-gray-500 bg-white
+      hover:bg-gray-200 text-gray-800 dark:border-zinc-500
+      dark:hover:bg-zinc-800 dark:hover:text-white transition duration-100
       ${
         selectedFilters.includes(filter)
-          ? 'bg-zinc-800 text-white dark:text-black dark:bg-white'
+          ? 'bg-gray-200 dark:text-white dark:bg-zinc-800'
           : 'dark:bg-zinc-900 dark:text-white'
-      }`}
+      } ${buttonStyle}`}
           >
-            {filter}
+            #{filter}
           </button>
         ))}
       </div>
     );
   };
+
+  console.log('categoryOpen', categoryOpen);
+
+  useEffect(() => {
+    const handleClose = (event: any) => {
+      if (!ref.current || !ref.current.contains(event.target))
+        setCategoryOpen(false);
+    };
+
+    window.addEventListener('mousedown', handleClose);
+    window.addEventListener('touchstart', handleClose);
+    return () => {
+      window.removeEventListener('mousedown', handleClose);
+      window.removeEventListener('touchstart', handleClose);
+    };
+  }, []);
 
   useEffect(() => {
     const filterItems = () => {
@@ -67,33 +91,50 @@ const Portfolio = () => {
   }, [selectedFilters]);
 
   return (
-    <section className='border-solid border-black border-b-2 dark:border-zinc-500'>
-      <div className='border-solid border-black border-b-2 dark:border-zinc-500'>
-        <div className='flex flex-wrap justify-between container mx-auto py-5 xl:px-0 px-3'>
+    <section className='border-solid border-black border-b dark:border-zinc-500'>
+      <div className='border-solid border-black border-b dark:border-zinc-500 relative'>
+        <div className='flex flex-wrap justify-between items-center container mx-auto xl:px-0 px-3'>
           <h2
-            className={`${notoSerifKR.className} font-bold text-xl dark:text-white md:text-2xl`}
+            className={`${notoSerifKR.className} font-bold dark:text-white md:text-2xl text-lg md:py-12 py-4`}
           >
             Portfolio
           </h2>
-          <CategoryComponent display='sm:flex hidden' />
-          <FiMoreHorizontal
-            className='cursor-pointer sm:hidden block dark:text-white'
-            size={22}
-            onClick={() => setCategoryOpen((prev) => !prev)}
-          />
-          {categoryOpen && (
-            <div className='w-full flex justify-center border-t border-zinc-900 dark:border-zinc-500 mt-4 pt-4'>
-              <CategoryComponent display='sm:hidden' />
-            </div>
-          )}
+          <CategoryComponent divStyle='sm:flex hidden' buttonStyle='' />
+          <div className='relative sm:hidden block w-5 h-5'>
+            <SlArrowUp
+              className={`cursor-pointer dark:text-white ${
+                categoryOpen ? 'block' : 'hidden'
+              } absolute right-0 top-0 p-0.5`}
+              size={18}
+              onClick={() => setCategoryOpen(false)}
+            />
+            <SlArrowDown
+              className={`cursor-pointer dark:text-white ${
+                categoryOpen ? 'hidden' : 'block'
+              } absolute right-0 top-0 p-0.5`}
+              size={18}
+              onClick={() => setCategoryOpen(true)}
+            />
+          </div>
         </div>
       </div>
+      {categoryOpen && (
+        <div
+          ref={ref}
+          className='absolute right-2 mt-2 rounded overflow-hidden border border-solid border-gray-500'
+        >
+          <CategoryComponent
+            divStyle='sm:hidden flex-col-reverse'
+            buttonStyle='rounded-none border-none mx-0 py-2 text-left'
+          />
+        </div>
+      )}
       <ul className='container mx-auto py-12 flex flex-wrap xl:px-0 px-3'>
         {filteredItems.map((project) => {
           const { id, image, category, name } = project;
           return (
-            <li key={id} className='mb-6 md:mb-5 lg:w-1/3 w-full'>
-              <div className='lg:mr-5 mr-0'>
+            <li key={id} className='mb-9 md:mb-12 lg:w-1/3 w-full'>
+              <div className='lg:mx-2.5 mx-0'>
                 <Link href={`/portfolio/${id}`}>
                   <div className='border border-solid border-zinc-700/0 dark:border-zinc-700'>
                     <Image
@@ -102,16 +143,16 @@ const Portfolio = () => {
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
-                  <div className='pt-2'>
+                  <div className='pt-2 pl-3'>
                     <h4
-                      className={`${notoSerifKR.className} font-bold text-lg dark:text-white dark:font-normal`}
+                      className={`${notoSerifKR.className} font-bold text-xl dark:text-white dark:font-normal`}
                     >
                       {name}
                     </h4>
                     <p
-                      className={`${notoSerifKR.className} text-sm my-0.5 dark:text-white`}
+                      className={`${notoSerifKR.className} text-gray-800 text-sm my-2 dark:text-zinc-300`}
                     >
-                      {category}
+                      #{category}
                     </p>
                   </div>
                 </Link>
