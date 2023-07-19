@@ -40,13 +40,13 @@ const Portfolio = () => {
             key={`filters-${idx}`}
             className={`${
               notoSerifKR.className
-            } px-3 py-1 mx-1.5 cursor-pointer rounded border border-solid border-gray-500 bg-white
+            } px-3 py-1 cursor-pointer rounded border border-solid border-gray-500
       hover:bg-gray-200 text-gray-800 dark:border-zinc-500
       dark:hover:bg-zinc-800 dark:hover:text-white transition duration-100
       ${
         selectedFilters.includes(filter)
           ? 'bg-gray-200 dark:text-white dark:bg-zinc-800'
-          : 'dark:bg-zinc-900 dark:text-white'
+          : 'dark:bg-zinc-900 dark:text-white bg-white'
       } ${buttonStyle}`}
           >
             #{filter}
@@ -99,7 +99,7 @@ const Portfolio = () => {
           >
             Portfolio
           </h2>
-          <CategoryComponent divStyle='sm:flex hidden' buttonStyle='' />
+          <CategoryComponent divStyle='sm:flex hidden' buttonStyle='mx-1.5' />
           <div className='relative sm:hidden block w-5 h-5'>
             <SlArrowUp
               className={`cursor-pointer dark:text-white ${
@@ -111,7 +111,7 @@ const Portfolio = () => {
             <SlArrowDown
               className={`cursor-pointer dark:text-white ${
                 categoryOpen ? 'hidden' : 'block'
-              } absolute right-0 top-0 p-0.5`}
+              } absolute right-0 top-0 p-0.5 mx-none`}
               size={18}
               onClick={() => setCategoryOpen(true)}
             />
