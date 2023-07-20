@@ -21,7 +21,7 @@ import romand_concept from 'public/images/romand_concept.jpg';
 import movieApp_concept from 'public/images/movieApp_concept.jpg';
 import todoSomething_concept from 'public/images/todoSomething_concept.jpg';
 import disney_concept from 'public/images/disney_concept.jpg';
-import semicolon_concept from 'public/images/semicolon_thumb.jpg';
+import semicolon_concept from 'public/images/semicolon_concept.jpg';
 import Undefined_webMall_concept from 'public/images/Undefined_webMall_concept.jpg';
 
 export interface projectsType {
