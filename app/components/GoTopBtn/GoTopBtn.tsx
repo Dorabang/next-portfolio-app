@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { AiOutlineArrowUp } from 'react-icons/ai';
 import { BsArrowUp } from 'react-icons/bs';
 
 const GoTopBtn = () => {
@@ -29,7 +28,7 @@ const GoTopBtn = () => {
   return (
     <div
       className={`${isScrolled ? 'fixed' : 'hidden'} lg:p-3 p-2 bg-zinc-900
-      2xl:right-[9.64%] xl:right-[7.8%] lg:right-3 md:right-[9.6%] right-42 bottom-14
+      2xl:right-[9.64%] xl:right-[7.8%] lg:right-3 md:right-[9.6%] right-4 bottom-14
       transition-all ease-in-out 
   text-white cursor-pointer border-solid border border-zinc-50
 dark:bg-white dark:border-zinc-900 dark:text-black rounded-lg`}
