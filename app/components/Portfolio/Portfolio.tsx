@@ -9,6 +9,8 @@ import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 type filtersType = string[];
 
 const Portfolio = () => {
+  const [mouseHover, setMouseHover] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<number>(0);
   const [categoryOpen, setCategoryOpen] = useState<boolean>(false);
   const [selectedFilters, setSelectedFilters] = useState<filtersType>([]);
   const [filteredItems, setFilteredItems] = useState(projects);
@@ -23,6 +25,11 @@ const Portfolio = () => {
     } else {
       setSelectedFilters([...selectedFilters, selectedCategory]);
     }
+  };
+
+  const handleHover = (id: number) => {
+    setSelectedId(id);
+    setMouseHover((prev) => !prev);
   };
 
   const CategoryComponent = ({
@@ -131,16 +138,30 @@ const Portfolio = () => {
       )}
       <ul className='container mx-auto py-12 flex flex-wrap xl:px-0 px-3'>
         {filteredItems.map((project) => {
-          const { id, image, category, name } = project;
+          const { id, image, image2, category, name } = project;
           return (
             <li key={id} className='mb-9 md:mb-12 lg:w-1/3 w-full'>
               <div className='lg:mx-2.5 mx-0'>
-                <Link href={`/portfolio/${id}`}>
-                  <div className='border border-solid border-zinc-700/0 dark:border-zinc-700'>
+                <Link
+                  href={`/portfolio/${id}`}
+                  onMouseEnter={() => handleHover(id)}
+                  onMouseLeave={() => handleHover(id)}
+                >
+                  <div className='relative border border-solid border-zinc-700/0 dark:border-zinc-700'>
+                    <Image
+                      src={image2}
+                      alt={`${name} 썸네일 사진`}
+                      style={{ objectFit: 'cover' }}
+                    />
                     <Image
                       src={image}
                       alt={`${name} 썸네일 사진`}
                       style={{ objectFit: 'cover' }}
+                      className={`absolute left-0 top-0 ${
+                        mouseHover && id === selectedId
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                      } transition-opacity ease-linear`}
                     />
                   </div>
                   <div className='pt-2 pl-3'>
