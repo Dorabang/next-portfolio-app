@@ -128,7 +128,7 @@ const Portfolio = () => {
       {categoryOpen && (
         <div
           ref={ref}
-          className='absolute right-2 mt-2 rounded overflow-hidden border border-solid border-gray-500'
+          className='absolute right-2 mt-2 rounded overflow-hidden border border-solid border-gray-500 z-50'
         >
           <CategoryComponent
             divStyle='sm:hidden flex-col-reverse'
