@@ -13,16 +13,16 @@ interface paramsType {
   params: { id: number };
 }
 
-export async function generateMetadata({
-  params: id,
-}: paramsType): Promise<Metadata> {
-  const project = projects.find((item) => item.id === Number(id));
-  console.log(project);
+// export async function generateMetadata({
+//   params: id,
+// }: paramsType): Promise<Metadata> {
+//   const project = projects.find((item) => item.id === Number(id));
+//   console.log(project);
 
-  return {
-    title: `Sem;Colon || ${project?.name}`,
-  };
-}
+//   return {
+//     title: `Sem;Colon || ${project?.name}`,
+//   };
+// }
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
