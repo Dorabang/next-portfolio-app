@@ -1,13 +1,13 @@
 'use client';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import Logo from '../../../public/images/logo.png';
-import Image from 'next/image';
 import DarkTheme from '../DarkMode';
 import notoSerifKR from '../NotoSerif';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const [isScroll, setIsScroll] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,9 +17,11 @@ const Header = () => {
         setIsScroll(false);
       }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   return (
     <header
       className={`bg-white/90 dark:bg-zinc-900/80 border-b border-solid border-black
@@ -29,13 +31,13 @@ const Header = () => {
       style={{ backdropFilter: isScroll ? 'blur(12px)' : 'none' }}
     >
       <div className='container mx-auto flex justify-between items-center md:py-6 py-4 xl:px-0 px-4'>
-        <Link href='/'>
+        <button onClick={() => router.push('/')}>
           <h1
             className={`${notoSerifKR.className} text-xl font-bold dark:text-white sm:text-3xl`}
           >
             sem;-colon
           </h1>
-        </Link>
+        </button>
         <DarkTheme />
       </div>
     </header>
