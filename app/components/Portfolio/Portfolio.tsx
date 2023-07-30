@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { projects } from './Constans';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -63,7 +63,7 @@ const Portfolio = () => {
     );
   };
 
-  console.log('categoryOpen', categoryOpen);
+  // console.log('categoryOpen', categoryOpen);
 
   useEffect(() => {
     const handleClose = (event: any) => {
@@ -97,6 +97,57 @@ const Portfolio = () => {
     filterItems();
   }, [selectedFilters]);
 
+  const portFolioComponents = useMemo(() => {
+    return filteredItems.map((project) => {
+      const { id, image, image2, category, name } = project;
+      return (
+        <li key={id} className='mb-9 md:mb-12 lg:w-1/3 w-full'>
+          <div className='lg:mx-2.5 mx-0'>
+            <Link
+              href={`/portfolio/${id}`}
+              onMouseEnter={() => handleHover(id)}
+              onMouseLeave={() => handleHover(id)}
+            >
+              <div className='relative border border-solid border-zinc-700/0 dark:border-zinc-700'>
+                <Image
+                  src={image2}
+                  alt={`${name} 썸네일 사진`}
+                  style={{ objectFit: 'cover' }}
+                />
+                <Image
+                  src={image}
+                  alt={`${name} 썸네일 사진`}
+                  style={{ objectFit: 'cover' }}
+                  className={`absolute left-0 top-0 ${
+                    mouseHover && id === selectedId
+                      ? 'opacity-100'
+                      : 'opacity-0'
+                  } transition-opacity ease-linear`}
+                />
+              </div>
+              <div className='pt-2 pl-3'>
+                <h4
+                  className={`${notoSerifKR.className} ${
+                    mouseHover && id === selectedId
+                      ? 'text-[#979942]'
+                      : 'text-black'
+                  } transition-colors ease-linear font-bold text-xl dark:text-white dark:font-normal`}
+                >
+                  {name}
+                </h4>
+                <p
+                  className={`${notoSerifKR.className} text-gray-800 text-sm my-2 dark:text-zinc-300`}
+                >
+                  #{category}
+                </p>
+              </div>
+            </Link>
+          </div>
+        </li>
+      );
+    });
+  }, [filteredItems, mouseHover, selectedId]);
+
   return (
     <section className='border-solid border-black border-b dark:border-zinc-500'>
       <div className='border-solid border-black border-b dark:border-zinc-500 relative'>
@@ -111,15 +162,15 @@ const Portfolio = () => {
             <SlArrowUp
               className={`cursor-pointer dark:text-white ${
                 categoryOpen ? 'block' : 'hidden'
-              } absolute right-0 top-0 p-0.5`}
-              size={18}
+              } absolute right-0 top-0`}
+              size={20}
               onClick={() => setCategoryOpen(false)}
             />
             <SlArrowDown
               className={`cursor-pointer dark:text-white ${
                 categoryOpen ? 'hidden' : 'block'
-              } absolute right-0 top-0 p-0.5 mx-none`}
-              size={18}
+              } absolute right-0 top-0 mx-none`}
+              size={20}
               onClick={() => setCategoryOpen(true)}
             />
           </div>
@@ -137,50 +188,7 @@ const Portfolio = () => {
         </div>
       )}
       <ul className='container mx-auto py-12 flex flex-wrap xl:px-0 px-3'>
-        {filteredItems.map((project) => {
-          const { id, image, image2, category, name } = project;
-          return (
-            <li key={id} className='mb-9 md:mb-12 lg:w-1/3 w-full'>
-              <div className='lg:mx-2.5 mx-0'>
-                <Link
-                  href={`/portfolio/${id}`}
-                  onMouseEnter={() => handleHover(id)}
-                  onMouseLeave={() => handleHover(id)}
-                >
-                  <div className='relative border border-solid border-zinc-700/0 dark:border-zinc-700'>
-                    <Image
-                      src={image2}
-                      alt={`${name} 썸네일 사진`}
-                      style={{ objectFit: 'cover' }}
-                    />
-                    <Image
-                      src={image}
-                      alt={`${name} 썸네일 사진`}
-                      style={{ objectFit: 'cover' }}
-                      className={`absolute left-0 top-0 ${
-                        mouseHover && id === selectedId
-                          ? 'opacity-100'
-                          : 'opacity-0'
-                      } transition-opacity ease-linear`}
-                    />
-                  </div>
-                  <div className='pt-2 pl-3'>
-                    <h4
-                      className={`${notoSerifKR.className} font-bold text-xl dark:text-white dark:font-normal`}
-                    >
-                      {name}
-                    </h4>
-                    <p
-                      className={`${notoSerifKR.className} text-gray-800 text-sm my-2 dark:text-zinc-300`}
-                    >
-                      #{category}
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </li>
-          );
-        })}
+        {portFolioComponents}
       </ul>
     </section>
   );
