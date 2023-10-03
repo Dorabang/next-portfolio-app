@@ -17,9 +17,7 @@ const Footer = () => {
         <address className={`${notoSerifKR.className} dark:text-zinc-400 pt-4`}>
           <span className='font-bold'>(FrontEnd Developer) Park su-a</span>
           <br />
-          <span className='pt-5 pb-2.5 inline-block'>Tel : 010.8930.1195</span>
-          <br />
-          E-mail : psa1195@naver.com
+          E-mail : pyj04149@gmail.com
         </address>
       </div>
     </footer>

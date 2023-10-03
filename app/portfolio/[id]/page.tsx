@@ -20,7 +20,7 @@ interface paramsType {
 //   console.log(project);
 
 //   return {
-//     title: `Sem;Colon || ${project?.name}`,
+//     title: `${project?.name} || Sem;Colon`,
 //   };
 // }
 
@@ -29,7 +29,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
     <div
       className='fixed 2xl:right-[9.64%] xl:right-[7.8%] lg:right-3 md:right-[9.6%] right-4
       lg:bottom-28 bottom-[6.5rem] flex justify-center items-center rounded-lg text-center
-bg-[#979942] text-white cursor-pointer border border-solid border-zinc-50'
+    bg-[#979942] text-white cursor-pointer border border-solid border-zinc-50'
     >
       {children}
     </div>
