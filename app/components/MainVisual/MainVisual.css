@@ -20,6 +20,7 @@ section .swiper .swiper-pagination {
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   transform: scale(0.9);
+  color: #979942;
 }
 
 .swiper-button-next {
