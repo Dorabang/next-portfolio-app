@@ -1,6 +1,6 @@
-import AboutMain from './components/AboutMain/AboutMain';
-import MainVisual from './components/MainVisual/MainVisual';
-import Portfolio from './components/Portfolio/Portfolio';
+import AboutMain from '@/components/AboutMain';
+import MainVisual from '@/components/MainVisual';
+import Portfolio from '@/components/Portfolio';
 
 const Home = () => {
   return (

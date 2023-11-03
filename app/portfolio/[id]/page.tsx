@@ -1,28 +1,15 @@
 'use client';
-import { projects, projectsType } from '@/app/components/Portfolio/Constans';
+import { projects, projectsType } from '@/components/Portfolio/Constans';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import notoSerifKR from '@/app/components/NotoSerif';
+import notoSerifKR from '@/components/NotoSerif';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
-import Head from 'next/head';
-import { Metadata, ResolvingMetadata } from 'next';
-import NotFound from '@/app/not-found';
+import NotFound from '@/not-found';
 
 interface paramsType {
   params: { id: number };
 }
-
-// export async function generateMetadata({
-//   params: id,
-// }: paramsType): Promise<Metadata> {
-//   const project = projects.find((item) => item.id === Number(id));
-//   console.log(project);
-
-//   return {
-//     title: `${project?.name} || Sem;Colon`,
-//   };
-// }
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -47,11 +34,6 @@ const PortfolioPage = ({ params: { id } }: paramsType) => {
 
   return (
     <>
-      <Head>
-        <title>Sem;Colon || {project.name}</title>
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
       <div className='container mx-auto h-full'>
         <div className='relative w-full'>
           <Image
