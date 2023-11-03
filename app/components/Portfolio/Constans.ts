@@ -1,28 +1,28 @@
 import { StaticImageData } from 'next/image';
 
 // thumb image1
-import romand from 'public/images/romand_thumb.jpg';
-import movieApp from 'public/images/movieApp_thumb.jpg';
-import todoSomething from 'public/images/todoSomething_thumb.jpg';
-import disney from 'public/images/disney_thumb.jpg';
-import semicolon from 'public/images/semicolon_thumb.jpg';
-import UndefinedImg from 'public/images/Undefined_thumb.jpg';
+import romand from '@/assets/images/romand_thumb.jpg';
+import movieApp from '@/assets/images/movieApp_thumb.jpg';
+import todoSomething from '@/assets/images/todoSomething_thumb.jpg';
+import disney from '@/assets/images/disney_thumb.jpg';
+import semicolon from '@/assets/images/semicolon_thumb.jpg';
+import UndefinedImg from '@/assets/images/Undefined_thumb.jpg';
 
 // thumb image2
-import romand2 from 'public/images/romand_thumb2.jpg';
-import movieApp2 from 'public/images/movieApp_thumb2.jpg';
-import todoSomething2 from 'public/images/todoSomething_thumb2.jpg';
-import disney2 from 'public/images/disney_thumb2.jpg';
-import semicolon2 from 'public/images/semicolon_thumb2.jpg';
-import UndefinedImg2 from 'public/images/Undefined_thumb2.jpg';
+import romand2 from '@/assets/images/romand_thumb2.jpg';
+import movieApp2 from '@/assets/images/movieApp_thumb2.jpg';
+import todoSomething2 from '@/assets/images/todoSomething_thumb2.jpg';
+import disney2 from '@/assets/images/disney_thumb2.jpg';
+import semicolon2 from '@/assets/images/semicolon_thumb2.jpg';
+import UndefinedImg2 from '@/assets/images/Undefined_thumb2.jpg';
 
 // concept images
-import romand_concept from 'public/images/romand_concept.jpg';
-import movieApp_concept from 'public/images/movieApp_concept.jpg';
-import todoSomething_concept from 'public/images/todoSomething_concept.jpg';
-import disney_concept from 'public/images/disney_concept.jpg';
-import semicolon_concept from 'public/images/semicolon_concept.jpg';
-import Undefined_webMall_concept from 'public/images/Undefined_webMall_concept.jpg';
+import romand_concept from '@/assets/images/romand_concept.jpg';
+import movieApp_concept from '@/assets/images/movieApp_concept.jpg';
+import todoSomething_concept from '@/assets/images/todoSomething_concept.jpg';
+import disney_concept from '@/assets/images/disney_concept.jpg';
+import semicolon_concept from '@/assets/images/semicolon_concept.jpg';
+import Undefined_webMall_concept from '@/assets/images/Undefined_webMall_concept.jpg';
 
 export interface projectsType {
   id: number;
@@ -30,7 +30,7 @@ export interface projectsType {
   descImg: StaticImageData;
   image: StaticImageData;
   image2: StaticImageData;
-  category: string;
+  category: string[];
   link: string;
 }
 
@@ -41,7 +41,7 @@ export const projects: projectsType[] = [
     image: UndefinedImg,
     image2: UndefinedImg2,
     descImg: Undefined_webMall_concept,
-    category: 'NextJS',
+    category: ['NextJS', 'TailwindCSS'],
     link: 'https://web-mall.vercel.app/',
   },
   {
@@ -50,7 +50,7 @@ export const projects: projectsType[] = [
     image: semicolon,
     image2: semicolon2,
     descImg: semicolon_concept,
-    category: 'NextJS',
+    category: ['NextJS', 'TailwindCSS', 'TypeScript'],
     link: '/',
   },
   {
@@ -59,7 +59,7 @@ export const projects: projectsType[] = [
     image: disney,
     image2: disney2,
     descImg: disney_concept,
-    category: 'React',
+    category: ['React', 'Axios', 'Firebase', 'RESTfulAPI'],
     link: 'https://react-disney-plus-app-92536.firebaseapp.com/',
   },
   {
@@ -68,7 +68,7 @@ export const projects: projectsType[] = [
     image: todoSomething,
     image2: todoSomething2,
     descImg: todoSomething_concept,
-    category: 'React',
+    category: ['React', 'RESTfulAPI', 'Axios'],
     link: 'https://dorabang.github.io/wanted-pre-onboarding-frontend/',
   },
   {
@@ -77,7 +77,7 @@ export const projects: projectsType[] = [
     image: movieApp,
     image2: movieApp2,
     descImg: movieApp_concept,
-    category: 'React',
+    category: ['React', 'RESTfulAPI'],
     link: 'https://dorabang.github.io/movieApp/',
   },
   {
@@ -86,7 +86,7 @@ export const projects: projectsType[] = [
     image: romand,
     image2: romand2,
     descImg: romand_concept,
-    category: 'HTML&CSS',
+    category: ['HTML&CSS'],
     link: 'https://dorabang.github.io/romandRenewalProject/',
   },
 ];
