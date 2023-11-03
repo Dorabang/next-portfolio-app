@@ -49,16 +49,22 @@ const MainVisual = () => {
               src={mv_img1}
               alt='Undefined 메인 배너 이미지'
               className='lg:block hidden'
+              sizes='100%'
+              priority
             />
             <Image
               src={mv_img1_tablet}
               alt='Undefined 메인 배너 이미지'
               className='hidden sm:block lg:hidden'
+              sizes='100%'
+              priority
             />
             <Image
               src={mv_img1_mobile}
               alt='Undefined 메인 배너 이미지'
               className='block sm:hidden'
+              sizes='100%'
+              priority
             />
           </Link>
         </SwiperSlide>
