@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { projects } from './Constans';
 import Link from 'next/link';
 import Image from 'next/image';
-import notoSerifKR from '@/app/components/NotoSerif';
+import notoSerifKR from '@/components/NotoSerif';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 type filtersType = string[];
@@ -14,9 +14,19 @@ const Portfolio = () => {
   const [categoryOpen, setCategoryOpen] = useState<boolean>(false);
   const [selectedFilters, setSelectedFilters] = useState<filtersType>([]);
   const [filteredItems, setFilteredItems] = useState(projects);
+
   const ref = useRef<HTMLDivElement | null>(null);
 
-  let filters: filtersType = ['HTML&CSS', 'React', 'NextJS'];
+  const filters: filtersType = [
+    'HTML&CSS',
+    'React',
+    'NextJS',
+    'TailwindCSS',
+    'TypeScript',
+    'Axios',
+    'Firebase',
+    'RESTfulAPI',
+  ];
 
   const handleFilterButtonClick = (selectedCategory: string) => {
     if (selectedFilters.includes(selectedCategory)) {
@@ -45,16 +55,19 @@ const Portfolio = () => {
           <button
             onClick={() => handleFilterButtonClick(filter)}
             key={`filters-${idx}`}
-            className={`${
-              notoSerifKR.className
-            } px-3 py-1 cursor-pointer rounded border border-solid border-gray-500
-      hover:bg-gray-200 text-gray-800 dark:border-zinc-500
-      dark:hover:bg-zinc-800 dark:hover:text-white transition duration-100
-      ${
-        selectedFilters.includes(filter)
-          ? 'bg-gray-200 dark:text-white dark:bg-zinc-800'
-          : 'dark:bg-zinc-900 dark:text-white bg-white'
-      } ${buttonStyle}`}
+            className={`
+              ${notoSerifKR.className}
+              px-3 py-1 cursor-pointer rounded border border-solid border-gray-500
+            hover:bg-gray-200 text-gray-800 dark:border-zinc-500
+            dark:hover:bg-zinc-800 dark:hover:text-white transition duration-100
+              text-sm
+              ${
+                selectedFilters.includes(filter)
+                  ? 'bg-gray-200 dark:text-white dark:bg-zinc-800'
+                  : 'dark:bg-zinc-900 dark:text-white bg-white'
+              }
+              ${buttonStyle}
+      `}
           >
             #{filter}
           </button>
@@ -83,8 +96,8 @@ const Portfolio = () => {
     const filterItems = () => {
       if (selectedFilters.length > 0) {
         let tempItems = selectedFilters.map((selectedCategory: string) => {
-          let temp = projects.filter(
-            (project) => project.category === selectedCategory
+          let temp = projects.filter((project) =>
+            project.category.includes(selectedCategory)
           );
           return temp;
         });
@@ -135,11 +148,17 @@ const Portfolio = () => {
                 >
                   {name}
                 </h4>
-                <p
-                  className={`${notoSerifKR.className} text-gray-800 text-sm my-2 dark:text-zinc-300`}
-                >
-                  #{category}
-                </p>
+
+                <div className='flex gap-2 items-center'>
+                  {category.map((item) => (
+                    <p
+                      key={item}
+                      className={`${notoSerifKR.className} text-gray-800 text-sm my-2 dark:text-zinc-300`}
+                    >
+                      #{item}
+                    </p>
+                  ))}
+                </div>
               </div>
             </Link>
           </div>

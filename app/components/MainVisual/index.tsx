@@ -14,17 +14,17 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper';
 
 // import mv img
-import mv_img1 from 'public/images/mv_undefined.jpg';
-import mv_img2 from 'public/images/mv_todoSomething.jpg';
-import mv_img3 from 'public/images/mv_disney.jpg';
+import mv_img1 from '@/assets/images/mv_undefined.jpg';
+import mv_img2 from '@/assets/images/mv_todoSomething.jpg';
+import mv_img3 from '@/assets/images/mv_disney.jpg';
 
-import mv_img1_tablet from 'public/images/mv_undefined_tablet.jpg';
-import mv_img2_tablet from 'public/images/mv_todoSomething_tablet.jpg';
-import mv_img3_tablet from 'public/images/mv_disney_tablet.jpg';
+import mv_img1_tablet from '@/assets/images/mv_undefined_tablet.jpg';
+import mv_img2_tablet from '@/assets/images/mv_todoSomething_tablet.jpg';
+import mv_img3_tablet from '@/assets/images/mv_disney_tablet.jpg';
 
-import mv_img1_mobile from 'public/images/mv_undefined_mobile.jpg';
-import mv_img2_mobile from 'public/images/mv_todoSomething_mobile.jpg';
-import mv_img3_mobile from 'public/images/mv_disney_mobile.jpg';
+import mv_img1_mobile from '@/assets/images/mv_undefined_mobile.jpg';
+import mv_img2_mobile from '@/assets/images/mv_todoSomething_mobile.jpg';
+import mv_img3_mobile from '@/assets/images/mv_disney_mobile.jpg';
 
 const MainVisual = () => {
   return (

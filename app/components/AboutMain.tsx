@@ -1,4 +1,4 @@
-import notoSerifKR from '@/app/components/NotoSerif';
+import notoSerifKR from '@/components/NotoSerif';
 import React from 'react';
 
 import { FaCss3Alt, FaGithub, FaHtml5, FaReact } from 'react-icons/fa';
