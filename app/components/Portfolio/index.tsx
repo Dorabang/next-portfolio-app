@@ -100,7 +100,11 @@ const Portfolio = () => {
           );
           return temp;
         });
-        setFilteredItems(tempItems.flat());
+
+        const flatArr = tempItems.flat();
+        const sortArr = [...new Map(flatArr.map((m) => [m.id, m])).values()];
+
+        setFilteredItems(sortArr);
       } else {
         setFilteredItems([...projects.reverse()]);
       }
