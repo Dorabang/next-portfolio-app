@@ -16,6 +16,14 @@ import disney2 from '@/assets/images/disney_thumb2.jpg';
 import semicolon2 from '@/assets/images/semicolon_thumb2.jpg';
 import UndefinedImg2 from '@/assets/images/Undefined_thumb2.jpg';
 
+// cover images
+import romand_cover from '@/assets/images/romand_cover.jpg';
+import movieApp_cover from '@/assets/images/movieApp_cover.jpg';
+import todoSomething_cover from '@/assets/images/todoSomething_cover.jpg';
+import disney_cover from '@/assets/images/disney_cover.jpg';
+import semicolon_cover from '@/assets/images/semicolon_cover.jpg';
+import Undefined_webMall_cover from '@/assets/images/Undefined_webMall_cover.jpg';
+
 // concept images
 import romand_concept from '@/assets/images/romand_concept.jpg';
 import movieApp_concept from '@/assets/images/movieApp_concept.jpg';
@@ -27,6 +35,7 @@ import Undefined_webMall_concept from '@/assets/images/Undefined_webMall_concept
 export interface projectsType {
   id: number;
   name: string;
+  coverImg: StaticImageData;
   descImg: StaticImageData;
   image: StaticImageData;
   image2: StaticImageData;
@@ -37,56 +46,62 @@ export interface projectsType {
 export const projects: projectsType[] = [
   {
     id: 0,
-    name: 'Undefined',
-    image: UndefinedImg,
-    image2: UndefinedImg2,
-    descImg: Undefined_webMall_concept,
-    category: ['NextJS', 'TailwindCSS'],
-    link: 'https://web-mall.vercel.app/',
+    name: 'rom&nd,',
+    image: romand,
+    image2: romand2,
+    coverImg: romand_cover,
+    descImg: romand_concept,
+    category: ['HTML&CSS'],
+    link: 'https://dorabang.github.io/romandRenewalProject/',
   },
   {
     id: 1,
-    name: 'sem;-colon',
-    image: semicolon,
-    image2: semicolon2,
-    descImg: semicolon_concept,
-    category: ['NextJS', 'TailwindCSS', 'TypeScript'],
-    link: '/',
-  },
-  {
-    id: 2,
-    name: 'DisneyPlus',
-    image: disney,
-    image2: disney2,
-    descImg: disney_concept,
-    category: ['React', 'Axios', 'Firebase', 'RESTfulAPI'],
-    link: 'https://react-disney-plus-app-92536.firebaseapp.com/',
-  },
-  {
-    id: 3,
-    name: 'TodoSomething',
-    image: todoSomething,
-    image2: todoSomething2,
-    descImg: todoSomething_concept,
-    category: ['React', 'RESTfulAPI', 'Axios'],
-    link: 'https://dorabang.github.io/wanted-pre-onboarding-frontend/',
-  },
-  {
-    id: 4,
     name: 'movieList',
     image: movieApp,
     image2: movieApp2,
+    coverImg: movieApp_cover,
     descImg: movieApp_concept,
     category: ['React', 'RESTfulAPI'],
     link: 'https://dorabang.github.io/movieApp/',
   },
   {
+    id: 2,
+    name: 'TodoSomething',
+    image: todoSomething,
+    image2: todoSomething2,
+    coverImg: todoSomething_cover,
+    descImg: todoSomething_concept,
+    category: ['React', 'RESTfulAPI'],
+    link: 'https://dorabang.github.io/wanted-pre-onboarding-frontend/',
+  },
+  {
+    id: 3,
+    name: 'DisneyPlus',
+    image: disney,
+    image2: disney2,
+    coverImg: disney_cover,
+    descImg: disney_concept,
+    category: ['React', 'RESTfulAPI', 'Firebase'],
+    link: 'https://react-disney-plus-app-92536.firebaseapp.com/',
+  },
+  {
+    id: 4,
+    name: 'sem;-colon',
+    image: semicolon,
+    image2: semicolon2,
+    coverImg: semicolon_cover,
+    descImg: semicolon_concept,
+    category: ['NextJS', 'TypeScript', 'TailwindCSS'],
+    link: '/',
+  },
+  {
     id: 5,
-    name: 'rom&nd,',
-    image: romand,
-    image2: romand2,
-    descImg: romand_concept,
-    category: ['HTML&CSS'],
-    link: 'https://dorabang.github.io/romandRenewalProject/',
+    name: 'Undefined',
+    image: UndefinedImg,
+    image2: UndefinedImg2,
+    coverImg: Undefined_webMall_cover,
+    descImg: Undefined_webMall_concept,
+    category: ['NextJS', 'TypeScript', 'TailwindCSS'],
+    link: 'https://web-mall.vercel.app/',
   },
 ];
