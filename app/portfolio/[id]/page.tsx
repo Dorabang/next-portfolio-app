@@ -37,6 +37,10 @@ const PortfolioPage = ({ params: { id } }: paramsType) => {
       <div className='container mx-auto h-full'>
         <div className='relative w-full'>
           <Image
+            src={project.coverImg}
+            alt={`${project.name} 커버 페이지 이미지`}
+          />
+          <Image
             src={project.descImg}
             alt={`${project.name} 컨셉 페이지 이미지`}
           />
