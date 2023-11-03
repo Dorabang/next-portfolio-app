@@ -21,11 +21,10 @@ const Portfolio = () => {
     'HTML&CSS',
     'React',
     'NextJS',
-    'TailwindCSS',
     'TypeScript',
-    'Axios',
-    'Firebase',
     'RESTfulAPI',
+    'Firebase',
+    'TailwindCSS',
   ];
 
   const handleFilterButtonClick = (selectedCategory: string) => {
@@ -103,7 +102,7 @@ const Portfolio = () => {
         });
         setFilteredItems(tempItems.flat());
       } else {
-        setFilteredItems([...projects]);
+        setFilteredItems([...projects.reverse()]);
       }
     };
 
