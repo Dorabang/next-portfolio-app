@@ -1,8 +1,7 @@
 'use client';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import DarkTheme from '../DarkMode';
-import notoSerifKR from '../NotoSerif';
+import DarkTheme from '@/components/DarkMode';
+import notoSerifKR from '@/components/NotoSerif';
 import { useRouter } from 'next/navigation';
 
 const Header = () => {
